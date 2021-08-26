@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="users.php" class="nav-link">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>Management Users</p>
                     </a>
