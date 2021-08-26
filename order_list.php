@@ -50,7 +50,6 @@ require_once("database/connection.php");
                                             <th scope="col">Buyer</th>
                                             <th scope="col">Style ID</th>
                                             <th scope="col">Collar ID</th>
-                                            <th scope="col">Mesin ID</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Order Date</th>
                                             <th scope="col">Buy Request</th>
@@ -75,7 +74,6 @@ require_once("database/connection.php");
                                                 <td><?= $row["buyer"]; ?></td>
                                                 <td><?= $row["style_id"]; ?></td>
                                                 <td><?= $row["collar_id"]; ?></td>
-                                                <td><?= $row["mesin_id"]; ?></td>
                                                 <td><?= $row["qty"]; ?></td>
                                                 <td><?= $row["tgl_pesan"]; ?></td>
                                                 <td><?= $row["buyreq"]; ?></td>
