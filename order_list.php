@@ -49,7 +49,7 @@ require_once("database/connection.php");
                                             <th scope="col">Mail Number</th>
                                             <th scope="col">Buyer</th>
                                             <th scope="col">Style ID</th>
-                                            <th scope="col">Collar ID</th>
+                                            <th scope="col">CollarID</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Order Date</th>
                                             <th scope="col">Buy Request</th>
