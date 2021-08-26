@@ -13,6 +13,7 @@ if (isset($_POST)) {
         $data_session = [
             "is_logged_in" => true,
             "username" => $data["username"],
+            "fullname" => $data["fullname"],
         ];
         session_start();
         $_SESSION = $data_session;
