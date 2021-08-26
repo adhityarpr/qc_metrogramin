@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="quality_control.php" class="nav-link">
                         <i class="nav-icon fas fa-balance-scale"></i>
                         <p>Quality Control</p>
                     </a>
