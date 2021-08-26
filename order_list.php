@@ -62,7 +62,7 @@ require_once("database/connection.php");
                                         <?php
                                         $query = mysqli_query($connect, "SELECT * FROM pesanan INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status");
 
-                                        var_dump(mysqli_fetch_assoc($query));
+                                        //var_dump(mysqli_fetch_assoc($query));
 
                                         $i = 1;
                                         foreach ($query as $row) :
