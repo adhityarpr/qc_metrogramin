@@ -34,12 +34,41 @@
                         <p>Daftar Pegawai</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
-                        <p>Data Master</p>
+                        <p>
+                            Data Master
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Style</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Collar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Mesin</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
+
+
+
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
