@@ -41,47 +41,69 @@ require_once("database/connection.php");
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
-                                <table class="table table-dark">
+                                <table class="table table-striped table-dark">
                                     <thead>
                                         <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">PO Number</th>
-                                            <th scope="col">Buyer</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Tanggal Pesan</th>
-                                            <th scope="col">Tanggal Selesai</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
 
+                                            <th scope="col">Posisi</th>
+                                            <?php $posisi = [
+                                                "Front",
+                                                "Back",
+                                                "Hand",
+                                                "Collar",
+                                                "Cuff",
+                                                "Pocket",
+                                                "Label",
+                                            ];
+                                            $kondisi = [
+                                                "Sobek",
+                                                "Jaitan Lepas",
+                                                "tes"
+                                            ];
 
+                                            $i = 0;
+                                            while ($i < count($kondisi)) {
+                                            ?>
+                                                <th scope="col"><?= $kondisi[$i]; ?></th>
 
+                                            <?php
+                                                $i++;
+                                            }
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $query = mysqli_query($connect, "SELECT * FROM pesanan INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status");
 
-                                        //var_dump(mysqli_fetch_assoc($query));
-
-                                        $i = 1;
-                                        foreach ($query as $row) :
+                                        $i = 0;
+                                        while ($i < count($posisi)) {
                                         ?>
                                             <tr>
-                                                <th scope="row"><?= $i; ?></th>
-                                                <td><?= $row["po_number"]; ?></td>
-                                                <td><?= $row["buyer"]; ?></td>
-                                                <td><?= $row["qty"]; ?></td>
-                                                <td><?= $row["tgl_pesan"]; ?></td>
-                                                <td><?= $row["buyreq"]; ?></td>
-                                                <td><?= $row["cek_info"]; ?></td>
-                                                <td>
-                                                    <a href="quality_control_tambah_baju.php"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
-                                                </td>
+                                                <td><?= $posisi[$i]; ?></td>
+
+                                                <?php
+
+                                                $j = 0;
+                                                while ($j < count($kondisi)) {
+                                                ?>
+                                                    <td>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                        </div>
+                                                    </td>
+
+                                                <?php
+                                                    $j++;
+                                                }; ?>
+
+
                                             </tr>
+
                                         <?php
                                             $i++;
-                                        endforeach;
-                                        ?>
+                                        }; ?>
+
+
 
 
 
@@ -115,4 +137,5 @@ require_once("database/connection.php");
 
 
 
-<?php include("layout/footer.php"); ?>
+
+< <?php include("layout/footer.php"); ?>
