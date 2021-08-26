@@ -19,7 +19,7 @@ require_once("database/connection.php");
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Order List</h1>
+                    <h1 class="m-0 text-dark">Quality Control</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -36,7 +36,7 @@ require_once("database/connection.php");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Order List Data</h5>
+                            <h5 class="card-title">Quality Control List</h5>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -46,15 +46,14 @@ require_once("database/connection.php");
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">PO Number</th>
-                                            <th scope="col">Mail Number</th>
                                             <th scope="col">Buyer</th>
-                                            <th scope="col">Style ID</th>
-                                            <th scope="col">CollarID</th>
                                             <th scope="col">Quantity</th>
-                                            <th scope="col">Order Date</th>
-                                            <th scope="col">Buy Request</th>
+                                            <th scope="col">Tanggal Pesan</th>
+                                            <th scope="col">Tanggal Selesai</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Check By</th>
+                                            <th scope="col">Action</th>
+
+
 
                                         </tr>
                                     </thead>
@@ -70,20 +69,21 @@ require_once("database/connection.php");
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $row["po_number"]; ?></td>
-                                                <td><?= $row["mail_number"]; ?></td>
                                                 <td><?= $row["buyer"]; ?></td>
-                                                <td><?= $row["style_id"]; ?></td>
-                                                <td><?= $row["collar_id"]; ?></td>
                                                 <td><?= $row["qty"]; ?></td>
                                                 <td><?= $row["tgl_pesan"]; ?></td>
                                                 <td><?= $row["buyreq"]; ?></td>
                                                 <td><?= $row["cek_info"]; ?></td>
-                                                <td><?= $row["fullname"]; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button>
+                                                </td>
                                             </tr>
                                         <?php
                                             $i++;
                                         endforeach;
                                         ?>
+
+
 
                                     </tbody>
                                 </table>
@@ -112,4 +112,31 @@ require_once("database/connection.php");
 </div>
 <!-- /.content-wrapper -->
 
+
+
+<!-- Button trigger modal -->
+<button>
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-tambah" tabindex="-1" aria-labelledby="modal-tambahLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-tambahLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include("layout/footer.php"); ?>
