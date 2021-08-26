@@ -53,7 +53,7 @@ require_once("database/connection.php");
                                             <th scope="col">Mesin ID</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Order Date</th>
-                                            <th scope="col">Buy Req</th>
+                                            <th scope="col">Buy Request</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Check By</th>
 
