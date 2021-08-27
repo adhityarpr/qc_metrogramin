@@ -38,9 +38,14 @@ require_once("database/connection.php");
                         <div class="card-header">
                             <h5 class="card-title">Quality Control List</h5>
                         </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">PO Number</label>
+                                <input type="text" name="po_number" class="form-control" id="exampleInputEmail1" placeholder="PO Number" value="<?=$_GET['po_number'] ?>">
+                            </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
+                            
                                 <table class="table table-striped table-dark">
                                     <thead>
                                         <tr>
