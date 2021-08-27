@@ -68,38 +68,24 @@ require_once("database/connection.php");
 
                                                 <th scope="col">Kondisi</th>
                                                 <?php $posisi = [
+                                                    "Kerut",
+                                                    "Ngambang Bagian Dalam",
                                                     "Belang",
-                                                    "Tidak_Sebahu",
-                                                    "Nonjol",
-                                                    "Jeding",
+                                                    "Bubbling",
+                                                    "Belum Press",
+                                                    "Benang Keselip",
+                                                    "Tidak Dijahit",
+                                                    "Bekas Jahitan",
+                                                    "Benang Timbul",
+                                                    "Glue Mark",
+                                                    "Kondent",
+                                                    "Crease Mark",
                                                     "Kejang",
                                                     "Kelipat",
-                                                    "Loncat",
-                                                    "Meleset",
-                                                    "Tidak_Rata",
                                                     "Jebol",
-                                                    "Dedel",
-                                                    "Merk_Tidak_Center",
-                                                    "Tidak Center",
-                                                    "Kerut",
-                                                    "Ngegulung",
-                                                    "Ngambang Bagian Luar",
-                                                    "Gelembung/Melilit",
-                                                    "Bubbling",
-                                                    "Kancing Kurang Benang/Merudul/Ompong",
-                                                    "Panjang Pendek",
                                                     "Balap",
-                                                    "Cacat Kain/Aksesoris",
-                                                    "Cacat Press/Kotor(Benang Dalam)/Kelipat",
-                                                    "Crease Mark",
-                                                    "Lem/ Glue Mark",
-                                                    "Terbalik/Wrong Face Side",
-                                                    "Miring",
-                                                    "Jalur",
-                                                    "Seam Gapping",
-                                                    "See Through",
-                                                    "Empty",
-                                                    "Hiking",
+                                                    "Cacat Press",
+                                                    "Terbalik",
                                                     "Wrong Accsesories"
                                                 ];
                                                 $kondisi = [
@@ -107,9 +93,7 @@ require_once("database/connection.php");
                                                     "Back",
                                                     "Hand",
                                                     "Collar",
-                                                    "Cuff",
-                                                    "Pocket",
-                                                    "Label"
+                                                    "Cuff"
                                                 ];
 
                                                 $i = 0;
