@@ -45,24 +45,59 @@ require_once("database/connection.php");
                                 <label for="exampleInputEmail1">PO Number</label>
                                 <input type="text" name="po_number" class="form-control" id="exampleInputEmail1" placeholder="PO Number" value="<?=$_GET['po_number'] ?>">
                             </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Kode Baju</label>
+                                <input type="text" name="id_shirt" class="form-control" id="exampleInputEmail1" placeholder="Kode Baju" value="<?=$_GET['id_shirt'] ?>">
+                            </div>
                                 <table class="table table-striped table-dark">
                                     <thead>
                                         <tr>
 
-                                            <th scope="col">Posisi</th>
+                                            <th scope="col">Kondisi</th>
                                             <?php $posisi = [
+                                                "Belang",
+                                                "Tidak Sebahu",
+                                                "Nonjol",
+                                                "Jeding",
+                                                "Kejang",
+                                                "Kelipat",
+                                                "Loncat",
+                                                "Meleset",
+                                                "Tidak Rata",
+                                                "Jebol",
+                                                "Dedel",
+                                                "Merk Tidak Center",
+                                                "Tidak Center",
+                                                "Kerut",
+                                                "Ngegulung",
+                                                "Ngambang Bagian Luar",
+                                                "Gelembung/Melilit",
+                                                "Bubbling",
+                                                "Kancing Kurang Benang/Merudul/Ompong",
+                                                "Panjang Pendek",
+                                                "Balap",
+                                                "Cacat Kain/Aksesoris",
+                                                "Cacat Press/Kotor(Benang Dalam)/Kelipat",
+                                                "Crease Mark",
+                                                "Lem/ Glue Mark",
+                                                "Terbalik/Wrong Face Side",
+                                                "Miring",
+                                                "Jalur",
+                                                "Seam Gapping",
+                                                "See Through",
+                                                "Empty",
+                                                "Hiking",
+                                                "Wrong Accsesories"
+                                            ];
+                                            $kondisi = [
                                                 "Front",
                                                 "Back",
                                                 "Hand",
                                                 "Collar",
                                                 "Cuff",
                                                 "Pocket",
-                                                "Label",
-                                            ];
-                                            $kondisi = [
-                                                "Sobek",
-                                                "Jaitan Lepas",
-                                                "tes"
+                                                "Label"
+                                                
                                             ];
 
                                             $i = 0;

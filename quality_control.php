@@ -75,7 +75,7 @@ require_once("database/connection.php");
                                                 <td><?= $row["buyreq"]; ?></td>
                                                 <td><?= $row["cek_info"]; ?></td>
                                                 <td>
-                                                    <a href="quality_control_tambah_baju.php?po_number=<?=$row['po_number']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Detail</button></a>
+                                                    <a href="cek_qualitycontrol.php?id=<?=$row['id']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Detail</button></a>
                                                 </td>
                                             </tr>
                                         <?php

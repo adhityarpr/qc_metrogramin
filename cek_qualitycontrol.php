@@ -64,13 +64,13 @@ require_once("database/connection.php");
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $query = mysqli_query($connect, "SELECT * FROM quality_control INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status");
+                                        $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.id INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.id = '$_GET[id]' ");
 
                                         //var_dump(mysqli_fetch_assoc($query));
 
                                         $i = 1;
-                                        foreach ($query as $row) :
-                                        ?>
+                                        foreach ($query as $row) :?>
+                                        
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $row["po_number"]; ?></td>
@@ -85,7 +85,7 @@ require_once("database/connection.php");
                                                 <td><?= $row["cek_info"]; ?></td>
                                                 <td><?= $row["fullname"]; ?></td>
                                                 <td>
-                                                    <a href="quality_control_tambah_baju.php?po_number=<?=$row['po_number']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Detail</button></a>
+                                                    <a href="quality_control_tambah_baju.php?po_number=<?=$row['po_number']?>?id_shirt=<?=$row['id_shirt']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
                                                 </td>
                                             </tr>
                                         <?php
