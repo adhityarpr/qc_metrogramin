@@ -49,7 +49,7 @@ require_once("database/connection.php");
                                             <th scope="col">Username</th>
                                             <th scope="col">No Telepon</th>
                                             <th scope="col">Role</th>
-                                            <th scope="col">Aksi</th>
+                                            <th scope="col">Action</th>
 
                                         </tr>
                                     </thead>

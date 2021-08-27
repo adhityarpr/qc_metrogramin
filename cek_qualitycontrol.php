@@ -19,7 +19,7 @@ require_once("database/connection.php");
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Order List</h1>
+                    <h1 class="m-0 text-dark">Quality Control</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -36,7 +36,7 @@ require_once("database/connection.php");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Order List Data</h5>
+                            <h5 class="card-title">Quality Control List</h5>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -46,44 +46,54 @@ require_once("database/connection.php");
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">PO Number</th>
-                                            <th scope="col">Mail Number</th>
-                                            <th scope="col">Buyer</th>
-                                            <th scope="col">Style ID</th>
-                                            <th scope="col">CollarID</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Order Date</th>
-                                            <th scope="col">Buy Request</th>
+                                            <th scope="col">Kode Baju</th>
+                                            <th scope="col">Front</th>
+                                            <th scope="col">Back</th>
+                                            <th scope="col">Hand</th>
+                                            <th scope="col">Collar</th>
+                                            <th scope="col">Cuff</th>
+                                            <th scope="col">Pocket</th>
+                                            <th scope="col">Label</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Check By</th>
+                                            <th scope="col">Action</th>
+
+
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $query = mysqli_query($connect, "SELECT * FROM pesanan INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status");
+                                        $query = mysqli_query($connect, "SELECT * FROM quality_control INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status");
 
                                         //var_dump(mysqli_fetch_assoc($query));
 
                                         $i = 1;
-                                        foreach ((array)$query as $row) :
+                                        foreach ($query as $row) :
                                         ?>
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $row["po_number"]; ?></td>
-                                                <td><?= $row["mail_number"]; ?></td>
-                                                <td><?= $row["buyer"]; ?></td>
-                                                <td><?= $row["style_id"]; ?></td>
-                                                <td><?= $row["collar_id"]; ?></td>
-                                                <td><?= $row["qty"]; ?></td>
-                                                <td><?= $row["tgl_pesan"]; ?></td>
-                                                <td><?= $row["buyreq"]; ?></td>
+                                                <td><?= $row["id_shirt"]; ?></td>
+                                                <td><?= $row["front"]; ?></td>
+                                                <td><?= $row["back"]; ?></td>
+                                                <td><?= $row["hand"]; ?></td>
+                                                <td><?= $row["collar"]; ?></td>
+                                                <td><?= $row["cuff"]; ?></td>
+                                                <td><?= $row["pocket"]; ?></td>
+                                                <td><?= $row["label"]; ?></td>
                                                 <td><?= $row["cek_info"]; ?></td>
                                                 <td><?= $row["fullname"]; ?></td>
+                                                <td>
+                                                    <a href="quality_control_tambah_baju.php?po_number=<?=$row['po_number']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Detail</button></a>
+                                                </td>
                                             </tr>
                                         <?php
                                             $i++;
                                         endforeach;
                                         ?>
+
+
 
                                     </tbody>
                                 </table>
@@ -111,5 +121,8 @@ require_once("database/connection.php");
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+
 
 <?php include("layout/footer.php"); ?>
