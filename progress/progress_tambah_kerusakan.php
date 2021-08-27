@@ -42,8 +42,6 @@ $posisi = [
     "Hand",
     "Collar",
     "Cuff",
-    "Pocket",
-    "Label"
 ];
 
 // var_dump($_POST);
@@ -78,6 +76,7 @@ if (isset($_POST["Front"])) {
     $column = "";
     $values = "";
     $i = 0;
+    $counter = 0;
     while ($i < count($kondisi)) {
         if (isset($_POST["Front"][$kondisi[$i]])) {
             $column .= "$kondisi[$i],";
@@ -86,6 +85,7 @@ if (isset($_POST["Front"])) {
             } else {
                 $values .= $_POST["Front"][$kondisi[$i]];
             }
+            $counter = $counter + 1;
         }
         $i++;
     }
@@ -98,7 +98,38 @@ if (isset($_POST["Front"])) {
 
     $result_last_row = mysqli_fetch_assoc($query_last_row);
     $id_defact_last_row = $result_last_row["id_defact"];
-    $query = mysqli_query($connect, "UPDATE quality_control SET front = $id_defact_last_row WHERE po_number = $id_pesanan");
+    $query = mysqli_query($connect, "UPDATE quality_control SET front = $id_defact_last_row, jumlah = jumlah + $counter WHERE po_number = $id_pesanan");
+} else {
+    echo "front ga ada";
+}
+
+if (isset($_POST["Front"])) {
+    $column = "";
+    $values = "";
+    $i = 0;
+    $counter = 0;
+    while ($i < count($kondisi)) {
+        if (isset($_POST["Front"][$kondisi[$i]])) {
+            $column .= "$kondisi[$i],";
+            if ($i < count($kondisi)) {
+                $values .= $_POST["Front"][$kondisi[$i]] . ",";
+            } else {
+                $values .= $_POST["Front"][$kondisi[$i]];
+            }
+            $counter = $counter + 1;
+        }
+        $i++;
+    }
+
+    $column = mb_strcut($column, 0, -1);
+    $values = mb_strcut($values, 0, -1);
+    $query = mysqli_query($connect, "INSERT INTO defact ($column) VALUES($values)");
+
+    $query_last_row = mysqli_query($connect, "SELECT * FROM defact ORDER BY id_defact DESC LIMIT 1");
+
+    $result_last_row = mysqli_fetch_assoc($query_last_row);
+    $id_defact_last_row = $result_last_row["id_defact"];
+    $query = mysqli_query($connect, "UPDATE quality_control SET front = $id_defact_last_row, jumlah = jumlah + $counter WHERE po_number = $id_pesanan");
 } else {
     echo "front ga ada";
 }

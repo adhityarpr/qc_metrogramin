@@ -54,7 +54,7 @@ require_once("database/connection.php");
                                             <th scope="col">Cuff</th>
                                             <th scope="col">Pocket</th>
                                             <th scope="col">Label</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Jumlah</th>
                                             <th scope="col">Check By</th>
 
 
@@ -64,13 +64,42 @@ require_once("database/connection.php");
                                     <tbody>
                                         <?php
                                         $id_pesanan = $_GET['id'];
-                                        $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.id INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.id = $id_pesanan ");
+                                        $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.po_number INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.po_number = $id_pesanan");
 
-                                        $result2 = mysqli_fetch_assoc($query);
-                                        $cek_rows = mysqli_num_rows($query);
+                                        if ($query) {
+
+                                            $cek_rows = mysqli_num_rows($query);
+                                        } else {
+                                            $cek_rows = 0;
+                                        }
 
                                         if ($cek_rows >= 1) {
+
+
+                                            $result2 = mysqli_fetch_assoc($query);
                                             $po_number = $result2["po_number"];
+
+
+                                            $i = 1;
+                                            foreach ($query as $row) : ?>
+
+                                                <tr>
+                                                    <th scope="row"><?= $i; ?></th>
+                                                    <td><?= $row["po_number"]; ?></td>
+                                                    <td><?= $row["id_shirt"]; ?></td>
+                                                    <td><?= $row["front"]; ?></td>
+                                                    <td><?= $row["back"]; ?></td>
+                                                    <td><?= $row["hand"]; ?></td>
+                                                    <td><?= $row["collar"]; ?></td>
+                                                    <td><?= $row["cuff"]; ?></td>
+                                                    <td><?= $row["pocket"]; ?></td>
+                                                    <td><?= $row["label"]; ?></td>
+                                                    <td><?= $row["jumlah"]; ?></td>
+                                                    <td><?= $row["fullname"]; ?></td>
+                                                </tr>
+                                        <?php
+                                                $i++;
+                                            endforeach;
                                         } else {
                                             $query2 = mysqli_query($connect, "SELECT * FROM pesanan WHERE id =$id_pesanan");
                                             $result = mysqli_fetch_assoc($query2);
@@ -81,26 +110,6 @@ require_once("database/connection.php");
 
 
 
-                                        $i = 1;
-                                        foreach ($query as $row) : ?>
-
-                                            <tr>
-                                                <th scope="row"><?= $i; ?></th>
-                                                <td><?= $row["po_number"]; ?></td>
-                                                <td><?= $row["id_shirt"]; ?></td>
-                                                <td><?= $row["front"]; ?></td>
-                                                <td><?= $row["back"]; ?></td>
-                                                <td><?= $row["hand"]; ?></td>
-                                                <td><?= $row["collar"]; ?></td>
-                                                <td><?= $row["cuff"]; ?></td>
-                                                <td><?= $row["pocket"]; ?></td>
-                                                <td><?= $row["label"]; ?></td>
-                                                <td><?= $row["cek_info"]; ?></td>
-                                                <td><?= $row["fullname"]; ?></td>
-                                            </tr>
-                                        <?php
-                                            $i++;
-                                        endforeach;
                                         ?>
 
 
