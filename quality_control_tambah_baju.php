@@ -41,113 +41,127 @@ require_once("database/connection.php");
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">PO Number</label>
-                                <input type="text" name="po_number" class="form-control" id="exampleInputEmail1" placeholder="PO Number" value="<?=$_GET['po_number'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Kode Baju</label>
-                                <input type="text" name="id_shirt" class="form-control" id="exampleInputEmail1" placeholder="Kode Baju" value="<?=$_GET['id_shirt'] ?>">
-                            </div>
-                                <table class="table table-striped table-dark">
-                                    <thead>
-                                        <tr>
+                                <form action="progress/progress_tambah_kerusakan.php" method="POST">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">PO Number</label>
+                                        <input type="text" name="po_number" class="form-control" id="exampleInputEmail1" placeholder="PO Number" value="<?= $_GET['po_number'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <?php $shirt_id = $_GET['id_shirt'];
+                                        $shirt_id = explode("-", $shirt_id);
+                                        $counter = intval($shirt_id[1]) + 1;
+                                        $shirt_id = $shirt_id[0] . "-" . strval($counter);
 
-                                            <th scope="col">Kondisi</th>
-                                            <?php $posisi = [
-                                                "Belang",
-                                                "Tidak Sebahu",
-                                                "Nonjol",
-                                                "Jeding",
-                                                "Kejang",
-                                                "Kelipat",
-                                                "Loncat",
-                                                "Meleset",
-                                                "Tidak Rata",
-                                                "Jebol",
-                                                "Dedel",
-                                                "Merk Tidak Center",
-                                                "Tidak Center",
-                                                "Kerut",
-                                                "Ngegulung",
-                                                "Ngambang Bagian Luar",
-                                                "Gelembung/Melilit",
-                                                "Bubbling",
-                                                "Kancing Kurang Benang/Merudul/Ompong",
-                                                "Panjang Pendek",
-                                                "Balap",
-                                                "Cacat Kain/Aksesoris",
-                                                "Cacat Press/Kotor(Benang Dalam)/Kelipat",
-                                                "Crease Mark",
-                                                "Lem/ Glue Mark",
-                                                "Terbalik/Wrong Face Side",
-                                                "Miring",
-                                                "Jalur",
-                                                "Seam Gapping",
-                                                "See Through",
-                                                "Empty",
-                                                "Hiking",
-                                                "Wrong Accsesories"
-                                            ];
-                                            $kondisi = [
-                                                "Front",
-                                                "Back",
-                                                "Hand",
-                                                "Collar",
-                                                "Cuff",
-                                                "Pocket",
-                                                "Label"
-                                                
-                                            ];
+
+                                        ?>
+                                        <label for="exampleInputEmail1">Kode Baju</label>
+                                        <input type="text" name="id_shirt" class="form-control" id="exampleInputEmail1" placeholder="Kode Baju" value="<?= $shirt_id ?>">
+                                    </div>
+
+
+
+
+
+                                    <table class="table table-striped table-dark">
+                                        <thead>
+                                            <tr>
+
+                                                <th scope="col">Kondisi</th>
+                                                <?php $posisi = [
+                                                    "Belang",
+                                                    "Tidak_Sebahu",
+                                                    "Nonjol",
+                                                    "Jeding",
+                                                    "Kejang",
+                                                    "Kelipat",
+                                                    "Loncat",
+                                                    "Meleset",
+                                                    "Tidak_Rata",
+                                                    "Jebol",
+                                                    "Dedel",
+                                                    "Merk_Tidak_Center",
+                                                    "Tidak Center",
+                                                    "Kerut",
+                                                    "Ngegulung",
+                                                    "Ngambang Bagian Luar",
+                                                    "Gelembung/Melilit",
+                                                    "Bubbling",
+                                                    "Kancing Kurang Benang/Merudul/Ompong",
+                                                    "Panjang Pendek",
+                                                    "Balap",
+                                                    "Cacat Kain/Aksesoris",
+                                                    "Cacat Press/Kotor(Benang Dalam)/Kelipat",
+                                                    "Crease Mark",
+                                                    "Lem/ Glue Mark",
+                                                    "Terbalik/Wrong Face Side",
+                                                    "Miring",
+                                                    "Jalur",
+                                                    "Seam Gapping",
+                                                    "See Through",
+                                                    "Empty",
+                                                    "Hiking",
+                                                    "Wrong Accsesories"
+                                                ];
+                                                $kondisi = [
+                                                    "Front",
+                                                    "Back",
+                                                    "Hand",
+                                                    "Collar",
+                                                    "Cuff",
+                                                    "Pocket",
+                                                    "Label"
+                                                ];
+
+                                                $i = 0;
+                                                while ($i < count($kondisi)) {
+                                                ?>
+                                                    <th scope="col"><?= $kondisi[$i]; ?></th>
+
+                                                <?php
+                                                    $i++;
+                                                }
+                                                ?>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
 
                                             $i = 0;
-                                            while ($i < count($kondisi)) {
+                                            while ($i < count($posisi)) {
                                             ?>
-                                                <th scope="col"><?= $kondisi[$i]; ?></th>
+                                                <tr>
+                                                    <td><?= $posisi[$i]; ?></td>
+
+                                                    <?php
+
+                                                    $j = 0;
+                                                    while ($j < count($kondisi)) {
+                                                    ?>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="<?= $kondisi[$j]; ?>[<?= $posisi[$i]; ?>]" type="checkbox" value="true" id="defaultCheck1">
+                                                            </div>
+                                                        </td>
+
+                                                    <?php
+                                                        $j++;
+                                                    }; ?>
+
+
+                                                </tr>
 
                                             <?php
                                                 $i++;
-                                            }
-                                            ?>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-
-                                        $i = 0;
-                                        while ($i < count($posisi)) {
-                                        ?>
-                                            <tr>
-                                                <td><?= $posisi[$i]; ?></td>
-
-                                                <?php
-
-                                                $j = 0;
-                                                while ($j < count($kondisi)) {
-                                                ?>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                        </div>
-                                                    </td>
-
-                                                <?php
-                                                    $j++;
-                                                }; ?>
-
-
-                                            </tr>
-
-                                        <?php
-                                            $i++;
-                                        }; ?>
+                                            }; ?>
 
 
 
 
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                    <button type="submit">Simpan</button>
+                                </form>
                             </div>
                             <!-- /.row -->
                         </div>

@@ -56,7 +56,6 @@ require_once("database/connection.php");
                                             <th scope="col">Label</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Check By</th>
-                                            <th scope="col">Action</th>
 
 
 
@@ -64,13 +63,27 @@ require_once("database/connection.php");
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.id INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.id = '$_GET[id]' ");
+                                        $id_pesanan = $_GET['id'];
+                                        $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.id INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.id = $id_pesanan ");
 
-                                        //var_dump(mysqli_fetch_assoc($query));
+                                        $result2 = mysqli_fetch_assoc($query);
+                                        $cek_rows = mysqli_num_rows($query);
+
+                                        if ($cek_rows >= 1) {
+                                            $po_number = $result2["po_number"];
+                                        } else {
+                                            $query2 = mysqli_query($connect, "SELECT * FROM pesanan WHERE id =$id_pesanan");
+                                            $result = mysqli_fetch_assoc($query2);
+                                            $po_number = $result["po_number"];
+                                        }
+
+
+
+
 
                                         $i = 1;
-                                        foreach ($query as $row) :?>
-                                        
+                                        foreach ($query as $row) : ?>
+
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $row["po_number"]; ?></td>
@@ -84,9 +97,6 @@ require_once("database/connection.php");
                                                 <td><?= $row["label"]; ?></td>
                                                 <td><?= $row["cek_info"]; ?></td>
                                                 <td><?= $row["fullname"]; ?></td>
-                                                <td>
-                                                    <a href="quality_control_tambah_baju.php?po_number=<?=$row['po_number']?>?id_shirt=<?=$row['id_shirt']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
-                                                </td>
                                             </tr>
                                         <?php
                                             $i++;
@@ -97,6 +107,15 @@ require_once("database/connection.php");
 
                                     </tbody>
                                 </table>
+                                <?php if ($cek_rows >= 1) {
+                                ?>
+                                    <a href="quality_control_tambah_baju.php?po_number=<?= $po_number ?>&id_shirt=<?= $row['id_shirt'] ?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a href="quality_control_tambah_baju.php?po_number=<?= $po_number ?>&id_shirt=A-0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
+                                <?php
+                                }; ?>
                             </div>
                             <!-- /.row -->
                         </div>
