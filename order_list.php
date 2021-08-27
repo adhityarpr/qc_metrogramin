@@ -65,7 +65,7 @@ require_once("database/connection.php");
                                         //var_dump(mysqli_fetch_assoc($query));
 
                                         $i = 1;
-                                        foreach ((array)$query as $row) :
+                                        foreach ($query as $row) :
                                         ?>
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
