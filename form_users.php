@@ -19,7 +19,7 @@ require_once("database/connection.php");
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Management Users</h1>
+                    <h1 class="m-0 text-dark">Tambah Users</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -36,9 +36,13 @@ require_once("database/connection.php");
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title"><a href="form_users.php" class="btn btn-primary">Tambah</a></h5>
+                            <h5 class="card-title">Tambah Data Users</h5>
                         </div>
                         <!-- /.card-header -->
+                        <div class="card">
+                            <div class="card-header">
+                            <h3 class="card-title"><a href="form_users.php" class="btn btn-primary">Tambah</a></h3>
+                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <table class="table table-dark">

@@ -69,24 +69,24 @@ require_once("database/connection.php");
                                                 <th scope="col">Kondisi</th>
                                                 <?php $posisi = [
                                                     "Kerut",
-                                                    "Ngambang Bagian Dalam",
+                                                    "Ngambang_Bagian_Dalam",
                                                     "Belang",
                                                     "Bubbling",
-                                                    "Belum Press",
-                                                    "Benang Keselip",
-                                                    "Tidak Dijahit",
-                                                    "Bekas Jahitan",
-                                                    "Benang Timbul",
-                                                    "Glue Mark",
+                                                    "Belum_Press",
+                                                    "Benang_Keselip",
+                                                    "Tidak_Dijahit",
+                                                    "Bekas_Jahitan",
+                                                    "Benang_Timbul",
+                                                    "Glue_Mark",
                                                     "Kondent",
-                                                    "Crease Mark",
+                                                    "Crease_Mark",
                                                     "Kejang",
                                                     "Kelipat",
                                                     "Jebol",
                                                     "Balap",
-                                                    "Cacat Press",
+                                                    "Cacat_Press",
                                                     "Terbalik",
-                                                    "Wrong Accsesories"
+                                                    "Wrong_Accsesories"
                                                 ];
                                                 $kondisi = [
                                                     "Front",

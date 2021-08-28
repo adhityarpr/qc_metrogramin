@@ -52,8 +52,6 @@ require_once("database/connection.php");
                                             <th scope="col">Hand</th>
                                             <th scope="col">Collar</th>
                                             <th scope="col">Cuff</th>
-                                            <th scope="col">Pocket</th>
-                                            <th scope="col">Label</th>
                                             <th scope="col">Jumlah</th>
                                             <th scope="col">Check By</th>
 
@@ -65,6 +63,12 @@ require_once("database/connection.php");
                                         <?php
                                         $id_pesanan = $_GET['id'];
                                         $query = mysqli_query($connect, "SELECT * , pesanan.po_number FROM quality_control INNER JOIN pesanan ON pesanan.id = quality_control.po_number INNER JOIN users ON pesanan.check_by = users.id_users INNER JOIN status ON pesanan.status = status.id_status WHERE quality_control.po_number = $id_pesanan");
+                                        $query_total = mysqli_query($connect, "SELECT SUM(jumlah) AS total_defact FROM quality_control WHERE po_number = 8");
+                                        $result_total = mysqli_fetch_row($query_total);
+                                        
+                                        //$result_total = $result_total[0];
+
+
 
                                         if ($query) {
 
@@ -92,8 +96,6 @@ require_once("database/connection.php");
                                                     <td><?= $row["hand"]; ?></td>
                                                     <td><?= $row["collar"]; ?></td>
                                                     <td><?= $row["cuff"]; ?></td>
-                                                    <td><?= $row["pocket"]; ?></td>
-                                                    <td><?= $row["label"]; ?></td>
                                                     <td><?= $row["jumlah"]; ?></td>
                                                     <td><?= $row["fullname"]; ?></td>
                                                 </tr>
@@ -113,7 +115,10 @@ require_once("database/connection.php");
                                         ?>
 
 
-
+                                    <!-- <tr>
+                                        <td> //$result_total </td>
+                                    </tr>             -->
+                                    
                                     </tbody>
                                 </table>
                                 <?php if ($cek_rows >= 1) {
@@ -125,9 +130,13 @@ require_once("database/connection.php");
                                     <a href="quality_control_tambah_baju.php?po_number=<?= $po_number ?>&id_shirt=A-0"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Tambah</button></a>
                                 <?php
                                 }; ?>
+                                
+                                <a href="calculate_fuzzy.php?id=<?=$row['id']?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">Calculate Fuzzy</button></a>
                             </div>
+                            
                             <!-- /.row -->
                         </div>
+                        
                         <!-- ./card-body -->
                         <div class="card-footer">
                             <div class="row">
